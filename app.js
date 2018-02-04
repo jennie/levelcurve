@@ -1,24 +1,52 @@
-const htmlStandards = require('reshape-standard')
-const cssStandards = require('spike-css-standards')
-const jsStandards = require('spike-js-standards')
-const pageId = require('spike-page-id')
-const sugarml = require('sugarml')
-const sugarss = require('sugarss')
-const env = process.env.SPIKE_ENV
+const env                     = require('dotenv').config()
+const path                    = require('path')
+const htmlStandards           = require('reshape-standard')
+const cssStandards            = require('spike-css-standards')
+const jsStandards             = require('spike-js-standards')
+const pageId                  = require('spike-page-id')
+const sugarml                 = require('sugarml')
+const sugarss                 = require('sugarss')
+const df                      = require('dateformat')
+const fn                      = require('format-num')
+const SpikeDatoCMS            = require('spike-datocms')
+
+const locals                  = { }
+
+const datos = new SpikeDatoCMS({
+  addDataTo: locals,
+  token: process.env.dato_api_key,
+  models: [
+  { name: 'home_page',
+    template: {
+      path: 'views/index.sgr',
+      output: (page) => { return `/index.html` }
+    }
+  },
+  { name: 'person' },
+  { name: 'client' },
+  { name: 'project' },
+  { name: 'quote' },
+  { name: 'service' }
+  ]
+})
 
 module.exports = {
   devtool: 'source-map',
   matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*', 'readme.md', 'yarn.lock', 'package-lock.json'],
-  reshape: htmlStandards({
+  ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
+  reshape: htmlStandards ({
     parser: sugarml,
-    locals: (ctx) => { return { pageId: pageId(ctx), foo: 'bar' } },
-    minify: env === 'production'
+    locals: (ctx) => { return Object.assign(locals,
+      { pageId: pageId(ctx) },
+      { df: df.bind(df) },
+      { fn: fn.bind(fn) }
+    )}
   }),
   postcss: cssStandards({
     parser: sugarss,
-    minify: env === 'production',
-    warnForDuplicates: env !== 'production'
+    locals: { datos }
   }),
-  babel: jsStandards()
+  babel: jsStandards(),
+  plugins: [datos]
 }
+

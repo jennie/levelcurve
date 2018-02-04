@@ -1,29 +1,42 @@
-extends(src='layout.sgr')
-  block(name='content')
-    h2 Hello World!
-    p(retext-skip) Thanks for using <a href='https://github.com/static-dev/spike'>spike</a>
-    p Example of locals: {{ foo }}
-    p(mdi) Example of **markdown**
-    p Example of "smart quotes" -- and dashes
+extends(src="layout.sgr")
+  block(name="title")
+    title Level Curve
 
+  block(name="content")
+
+    div.banner(style="background-image: url('//{{ dato._meta.imgixHost + item.bannerImage.path }}')")
+
+      div(md).
+        {{ item.bannerText }}
+
+    div.copy(md).
+      {{ item.copy }}
+
+
+
+section#quotes
+  each(loop="quote in dato.quote")
+    blockquote
+      p(mdi) {{ quote.text}}
+      p(mdi) {{ quote.client.name }}
+      hr
+
+section#projects
+  each(loop="project in dato.project")
+    h2 {{ project.title }}
+    each(loop="client in project.clients ")
+      h3 {{ client.name }}
+
+    if(condition='{{ project.description }}')
+      div.description(md).
+        {{ project.description }}
+
+    each(loop="service in project.services ")
+      h3 {{ service.name }}
+    each(loop="credit in project.credits ")
+      if(condition='{{ credit.role }}')
+        p {{ credit.role }} by {{ credit.contributor.name }}
+      else
+        p Featuring {{ credit.contributor }}
     hr
-
-    h3 Getting Started
-    h4 The Stack:
-    ul
-      li
-        a(href="http://github.com/reshape/reshape") reshape
-        |  for HTML transforms
-      li
-        a(href="https://babeljs.io/") babel
-        |  for JS transforms
-      li
-        a(href="http://postcss.org/") postcss
-        |  for CSS transforms
-      li
-        a(href="http://webpack.github.io") webpack
-        |  for JS bundling
-
-    p Customize your settings by editing the
-      a(href="https://spike.readme.io/docs/appjs") app.js
-      |  file or simply start by editing this view
+    // pre {{ JSON.stringify(project, null, 2) }}
