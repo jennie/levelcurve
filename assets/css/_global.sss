@@ -2,7 +2,7 @@
   @custom-media --mobile  (max-width:768px)
   @custom-media --desktop (min-width:768px)
 
-  --color-primary: #007AFF
+  --color-primary: #4848F0
   --color-blue: #1F4292
   --padding-primary: 24px
 
@@ -16,6 +16,22 @@ h1, h2, h3
 .banner
   height: 45vh
   padding: calc(var(--padding-primary)*2)
+  display: flex
+  align-items: center
+  text-align: center
+  background: var(--color-primary)
+  & .banner-text
+    height: 100%
+    color: #fff
+    text-align: center
+
+
+
+.tagline
+  text-align: center
+  color: var(--color-primary)
+  font-size: 32px
+  font-weight: 700
 
 #main
   max-width: 1200px

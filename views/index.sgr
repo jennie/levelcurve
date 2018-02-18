@@ -3,14 +3,16 @@ extends(src="layout.sgr")
     title Level Curve
 
   block(name="content")
-    div.banner(style="background-image: url('//{{ dato._meta.imgixHost + item.bannerImage.path }}')")
-      div(md).
+    // div.banner(style="background-image: url('//{{ dato._meta.imgixHost + item.bannerImage.path }}')")
+    div.banner
+      div.banner-text(md).
         {{ item.bannerText }}
 
-    div.copy(md).
+    div.tagline(md).
       {{ item.copy }}
 
 div#main
+  h2 Quotes
   section#quotes
     each(loop="quote in dato.quote")
       div.quote
@@ -18,6 +20,7 @@ div#main
           p(mdi) {{ quote.text}}
           p(mdi) {{ quote.client.name }}
 
+  h2 Projects
   section#projects.grid
     each(loop="project in dato.project")
       div.project
