@@ -3,40 +3,36 @@ extends(src="layout.sgr")
     title Level Curve
 
   block(name="content")
-
     div.banner(style="background-image: url('//{{ dato._meta.imgixHost + item.bannerImage.path }}')")
-
       div(md).
         {{ item.bannerText }}
 
     div.copy(md).
       {{ item.copy }}
 
+div#main
+  section#quotes
+    each(loop="quote in dato.quote")
+      div.quote
+        blockquote.level-grid__col--medium--10
+          p(mdi) {{ quote.text}}
+          p(mdi) {{ quote.client.name }}
 
+  section#projects.grid
+    each(loop="project in dato.project")
+      div.project
+        h2 {{ project.title }}
+        each(loop="client in project.clients ")
+          h3 {{ client.name }}
 
-section#quotes
-  each(loop="quote in dato.quote")
-    blockquote
-      p(mdi) {{ quote.text}}
-      p(mdi) {{ quote.client.name }}
-      hr
+        if(condition='{{ project.description }}')
+          div.description(md).
+            {{ project.description }}
 
-section#projects
-  each(loop="project in dato.project")
-    h2 {{ project.title }}
-    each(loop="client in project.clients ")
-      h3 {{ client.name }}
-
-    if(condition='{{ project.description }}')
-      div.description(md).
-        {{ project.description }}
-
-    each(loop="service in project.services ")
-      h3 {{ service.name }}
-    each(loop="credit in project.credits ")
-      if(condition='{{ credit.role }}')
-        p {{ credit.role }} by {{ credit.contributor.name }}
-      else
-        p Featuring {{ credit.contributor }}
-    hr
-    // pre {{ JSON.stringify(project, null, 2) }}
+        each(loop="service in project.services ")
+          h3 {{ service.name }}
+        each(loop="credit in project.credits ")
+          if(condition='{{ credit.role }}')
+            p {{ credit.role }} by {{ credit.contributor.name }}
+          else
+            p Featuring {{ credit.contributor }}

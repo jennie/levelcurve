@@ -10,9 +10,11 @@ html
     block(name='title')
       title Title of Your Site
 
+
+    link(href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet')
     link(rel='stylesheet' href='css/index.css')
 
-  body
+  body.level-container
     main(role='main' id='{{ pageId }}')
       block(name='content')
 

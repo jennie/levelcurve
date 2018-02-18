@@ -1,3 +1,52 @@
+:root
+  @custom-media --mobile  (max-width:768px)
+  @custom-media --desktop (min-width:768px)
+
+  --color-primary: #007AFF
+  --color-blue: #1F4292
+  --padding-primary: 24px
+
 body
-  padding: 50px
-  font-family: system-ui
+  font-family: 'Karla', sans-serif
+  margin: 0
+  padding: 0
+
+h1, h2, h3
+  font-weight: 700
+.banner
+  height: 45vh
+  padding: calc(var(--padding-primary)*2)
+
+#main
+  max-width: 1200px
+  margin: 0 auto
+  padding: var(--padding-primary)
+
+@media only screen and (--desktop)
+  #projects
+    grid-template-columns: 1fr 1fr 1fr
+
+#projects
+  grid-gap: calc(var(--padding-primary)/2)
+
+  & .project
+    background-color: #eee
+    padding: var(--padding-primary)
+
+.grid
+  align-items: flex-start
+  box-sizing: border-box
+  display: flex
+  display: grid
+  flex-wrap: wrap
+  position: relative
+
+.grid > *
+  box-sizing: border-box
+  height: 100%
+
+.grid > * :last-child,
+.grid > * :last-child > :last-child,
+.grid > * :last-child > :last-child > :last-child
+  margin-bottom: 0
+
