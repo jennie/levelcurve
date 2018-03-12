@@ -3,7 +3,6 @@ extends(src="layout.sgr")
     title Level Curve
 
   block(name="content")
-    // div.banner(style="background-image: url('//{{ dato._meta.imgixHost + item.bannerImage.path }}')")
     div.banner
       div.banner-text(md).
         {{ item.bannerText }}
