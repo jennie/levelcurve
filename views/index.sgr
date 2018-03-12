@@ -1,8 +1,8 @@
-extends(src="layout.sgr")
-  block(name="title")
+extends(src='layout.sgr')
+  block(name='title')
     title Level Curve
 
-  block(name="content")
+  block(name='content')
     div.banner
       div.banner-text(md).
         {{ item.bannerText }}
@@ -13,27 +13,27 @@ extends(src="layout.sgr")
 div#main
   h2 Quotes
   section#quotes
-    each(loop="quote in dato.quote")
+    each(loop='quote in dato.quote')
       div.quote
-        blockquote.level-grid__col--medium--10
+        blockquote
           p(mdi) {{ quote.text}}
           p(mdi) {{ quote.client.name }}
 
   h2 Projects
   section#projects.grid
-    each(loop="project in dato.project")
+    each(loop='project in dato.project')
       div.project
         h2 {{ project.title }}
-        each(loop="client in project.clients ")
+        each(loop='client in project.clients')
           h3 {{ client.name }}
 
         if(condition='{{ project.description }}')
           div.description(md).
             {{ project.description }}
 
-        each(loop="service in project.services ")
+        each(loop='service in project.services')
           h3 {{ service.name }}
-        each(loop="credit in project.credits ")
+        each(loop='credit in project.credits')
           if(condition='{{ credit.role }}')
             p {{ credit.role }} by {{ credit.contributor.name }}
           else
