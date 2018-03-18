@@ -3,38 +3,61 @@ extends(src='layout.sgr')
     title Level Curve
 
   block(name='content')
-    div.banner
-      div.banner-text(md).
-        {{ item.bannerText }}
+    #banner
+      .inner
+        img(src='/img/level_curve_logo.svg')
 
-    div.tagline(md).
-      {{ item.copy }}
+        div.tagline(md).
+          {{ item.copy }}
+    #about
+      .about-us
+        p about us
+      .how-we-do
+        p how we do
+    #main
+      .inner
+        h2 Quotes
+        section#quotes
+          each(loop='quote in dato.quote')
+            div.quote
+              blockquote
+                p(mdi) {{ quote.text}}
+                p(mdi) {{ quote.client.name }}
 
-div#main
-  h2 Quotes
-  section#quotes
-    each(loop='quote in dato.quote')
-      div.quote
-        blockquote
-          p(mdi) {{ quote.text}}
-          p(mdi) {{ quote.client.name }}
+        h2 Projects
+        section#projects.grid
+          each(loop='project in dato.project')
+            div.project(class='{{ project.featured ? "featured" : "" }}')
+              .cd
+                if(condition="{{ project.images[0] }}")
+                  img(src='//{{ dato._meta.imgixHost + project.images[0].path }}')
+                else
+                  img(src='/img/gem.png')
+              .copy
+                h2 {{ project.title }}
+                h3.clients
+                  each(loop='client in project.clients')
+                    if(condition='{{ client }}')
+                      span {{ client.name }}
+                      
+                if(condition='{{ project.date !== null }}')
+                  p.date {{ df(project.date, "mmm yyyy") }}
 
-  h2 Projects
-  section#projects.grid
-    each(loop='project in dato.project')
-      div.project
-        h2 {{ project.title }}
-        each(loop='client in project.clients')
-          h3 {{ client.name }}
+                if(condition='{{ project.description }}')
+                  div.description(md).
+                    {{ project.description }}
 
-        if(condition='{{ project.description }}')
-          div.description(md).
-            {{ project.description }}
+                if(condition='{{ project.services.length !== 0 }}')
+                  .services
+                    h4: span Services
+                      each(loop='service in project.services')
+                        span {{ service.name }}
 
-        each(loop='service in project.services')
-          h3 {{ service.name }}
-        each(loop='credit in project.credits')
-          if(condition='{{ credit.role }}')
-            p {{ credit.role }} by {{ credit.contributor.name }}
-          else
-            p Featuring {{ credit.contributor }}
+                if(condition='{{ project.credits.length !== 0 }}')
+                  .credits
+                    h4: span Credits
+                    each(loop='credit in project.credits')
+                      if(condition='{{ credit.role }}')
+                        p {{ credit.role }} by <b>{{ credit.contributor.name }}</b>
+                      else
+                        p Featuring <b>{{ credit.contributor }}</b>

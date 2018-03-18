@@ -16,23 +16,41 @@ const datos = new SpikeDatoCMS({
   addDataTo: locals,
   token: process.env.dato_api_key,
   models: [
-  { name: 'home_page',
-    template: {
-      path: 'views/index.sgr',
-      output: (page) => { return `/index.html` }
+    {
+      name: 'home_page',
+      template: {
+        path: 'views/index.sgr',
+        output: (page) => { return `/index.html` }
+      }
+    },
+  {
+    name: 'person'
+  },
+  {
+    name: 'client'
+  },
+  {
+    name: 'project',
+    transform: (data) => {
+      if (data.date) {
+        dateHours = new Date(data.date)
+        data.date = dateHours.setUTCHours(5)
+      }
+      return data
     }
   },
-  { name: 'person' },
-  { name: 'client' },
-  { name: 'project' },
-  { name: 'quote' },
-  { name: 'service' }
-  ]
+  {
+    name: 'quote'
+  },
+  {
+    name: 'service'
+  }
+]
 })
 
 module.exports = {
   devtool: 'source-map',
-  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.sss' },
+  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.css' },
   ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
   reshape: htmlStandards ({
     parser: sugarml,
@@ -43,7 +61,6 @@ module.exports = {
     )}
   }),
   postcss: cssStandards({
-    parser: sugarss,
     locals: { datos }
   }),
   babel: jsStandards(),
