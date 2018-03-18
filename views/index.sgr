@@ -7,8 +7,7 @@ extends(src='layout.sgr')
       .inner
         img(src='/img/level_curve_logo.svg')
         nav
-          // div.tagline(md).
-          //   {{ dato.home_page[0].copy }}
+
           ul(class='menu')
             li
               a(class='about' href='/#about') About
@@ -19,7 +18,8 @@ extends(src='layout.sgr')
             li
               a(class='contact' href='/#contact') Contact
 
-
+        div.tagline(md).
+          {{ dato.home_page[0].copy }}
     #sections
       section(id='about')
         .inner
