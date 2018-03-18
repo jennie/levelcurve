@@ -1,6 +1,4 @@
 :root {
-
-
   --color-primary: #4848F0;
   --color-blue: #00AEEF;
 
@@ -141,6 +139,18 @@ h4 {
   min-height: 45vh;
   background: rgb(255,255,255);
   background: linear-gradient(180deg, rgba(255,255,255,1) 19%, rgba(246,243,249,0) 100%);
+  & .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    & .logo {
+      flex: 1;
+    }
+    & nav {
+      margin-left: auto;
+    }
+  }
   & img {
     display: block;
     max-width: 100%;
@@ -408,3 +418,50 @@ section {
 }
 
 
+
+
+nav {
+  transition: all .5s cubic-bezier(.03,.82,.34,.99);
+  & ul {
+    display: flex;
+    align-items: center;
+    position: relative;
+    pointer-events: auto;
+    margin-left: auto;
+    padding: 0;
+
+    & li {
+      list-style: none;
+      margin-left: .5rem;
+      margin-bottom: 0;
+      & a {
+        height: 6rem;
+        width: 6rem;
+        color: inherit;
+        font-size: 1rem;
+        line-height: 6rem;
+        text-align: center;
+        border-radius: 50%;
+        display: block;
+        transition: all .5s cubic-bezier(.03,.82,.34,.99);
+        box-shadow: inset 0 0 0 2.5px transparent;
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@define-mixin hover $name, $color {
+  nav ul li a.$(name):hover {
+    color: $color;
+    box-shadow: inset 0 0 0 2.5px $color;
+  }
+}
+
+@mixin hover about, #EC008C;
+@mixin hover projects, #4848F0;
+@mixin hover team, #FFF200;
+@mixin hover contact, #00AEEF;
