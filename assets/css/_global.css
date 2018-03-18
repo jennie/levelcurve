@@ -4,7 +4,9 @@
 
   --color-primary: #4848F0;
   --color-blue: #1F4292;
-  --color-yellow: #FFDA00;
+  --color-yellow: #FFF200;
+  --color-lime: #E1F1A0;
+  --color-purple: #C4BAF2;
   --color-light-gray: #F6F3F9;
   --padding-primary: 24px;
 
@@ -30,6 +32,53 @@ h4 {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+#about {
+  & .inner {
+    display: grid;
+    grid-gap: calc(var(--padding-primary) * 2);
+    grid-template-columns: 1fr 1fr;
+    color: #444;
+  }
+  & .box {
+    background: #fff;
+    padding: var(--padding-primary);
+
+  }
+  & .a {
+    grid-row: 1 / span 2;
+  }
+  & .b {
+    grid-row: 2 / span 2;
+  }
+  
+}
+#quotes {
+  & .quote {
+    background-color: var(--color-lime);
+    box-shadow: 10px 10px 0px 0px var(--color-primary);
+    max-width: 40vw;
+    margin: 0 auto;
+
+
+    & blockquote {
+      padding: var(--padding-primary);
+      & p {
+        font-size: 2rem;
+        color: var(--color-primary);
+      }
+      & .attribution {
+        font-size: 1rem;
+        font-family: 'Space Mono', monospace;
+        font-style: italic;
+        text-align: right;
+        &:before {
+          content: "– "
+        }
+
+      }
+    }
+  }
+}
 
 .inner {
   max-width: var(--max-container);
@@ -81,6 +130,32 @@ h4 {
     background-color: #fff;
     &.featured {
       grid-column: span 2;
+      grid-row: span 2;
+      background-color: var(--color-primary);
+      color: #D6D6FF;
+      & .cd {
+        & img {
+          box-shadow: 10px 10px 0px 0px var(--color-yellow);
+        }
+      }
+      & h4 {
+        & span {
+          background: #fff;
+          color: var(--color-primary);
+        }
+        border-bottom: solid 2px #fff
+      }
+      & .copy {
+        & p b {
+          color: #fff;
+        }
+      }
+      & h2 {
+        color: #fff;
+      }
+      & h3 {
+        color: #D6D6FF;
+      }
     }
 
     & .cd {
@@ -140,13 +215,14 @@ h4 {
       }
     }
     & .services {
-      & span {
+      & span.service {
         &:after {
           content: '+';
           padding: 0 12px;
         }
         &:last-child:after {
           content: ''
+
         }
       }
     }

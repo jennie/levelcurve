@@ -10,24 +10,29 @@ extends(src='layout.sgr')
         div.tagline(md).
           {{ item.copy }}
     #about
-      .about-us
-        p about us
-      .how-we-do
-        p how we do
+      .inner
+
+        .about-us.box.a
+          p about us
+        .how-we-do.box.b
+          p how we do
     #main
       .inner
-        h2 Quotes
         section#quotes
           each(loop='quote in dato.quote')
             div.quote
               blockquote
-                p(mdi) {{ quote.text}}
-                p(mdi) {{ quote.client.name }}
+                p {{ quote.text}}
+                p(class="attribution").
+                  {{ quote.attribution }}
+                  
+                  {{ quote.client.name }}
 
         h2 Projects
+
         section#projects.grid
           each(loop='project in dato.project')
-            div.project(class='{{ project.featured ? "featured" : "" }}')
+            div.project(class='{{ project.featured ? "featured" : "" }}' style="order: {{ project.position }}")
               .cd
                 if(condition="{{ project.images[0] }}")
                   img(src='//{{ dato._meta.imgixHost + project.images[0].path }}')
@@ -39,9 +44,11 @@ extends(src='layout.sgr')
                   each(loop='client in project.clients')
                     if(condition='{{ client }}')
                       span {{ client.name }}
-                      
+
                 if(condition='{{ project.date !== null }}')
                   p.date {{ df(project.date, "mmm yyyy") }}
+                else
+                  p.date Coming soon!
 
                 if(condition='{{ project.description }}')
                   div.description(md).
@@ -51,7 +58,7 @@ extends(src='layout.sgr')
                   .services
                     h4: span Services
                       each(loop='service in project.services')
-                        span {{ service.name }}
+                        span(class='service') {{ service.name }}
 
                 if(condition='{{ project.credits.length !== 0 }}')
                   .credits
