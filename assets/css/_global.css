@@ -136,14 +136,13 @@ h4 {
 
 }
 #banner {
-  min-height: 45vh;
   background: rgb(255,255,255);
   background: linear-gradient(180deg, rgba(255,255,255,1) 19%, rgba(246,243,249,0) 100%);
   & .inner {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     & .logo {
       flex: 1;
     }
@@ -427,8 +426,8 @@ nav {
     align-items: center;
     position: relative;
     pointer-events: auto;
-    margin-left: auto;
     padding: 0;
+    margin: 0 auto;
 
     & li {
       list-style: none;
