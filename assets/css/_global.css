@@ -1,16 +1,30 @@
 :root {
-  @custom-media --mobile  (max-width:768px);
-  @custom-media --desktop (min-width:768px);
+
 
   --color-primary: #4848F0;
-  --color-blue: #1F4292;
+  --color-blue: #00AEEF;
+
   --color-yellow: #FFF200;
   --color-lime: #E1F1A0;
+  --color-pink: #EC008C;
   --color-purple: #C4BAF2;
   --color-light-gray: #F6F3F9;
   --padding-primary: 24px;
 
   --max-container: 1200px;
+  --narrow-container: 800px;
+
+  /* max-widths for containers */
+  --mini: 90vw;
+  --mobile: 90vw;
+  --tablet: 80vw;
+  --desktop: 1024px;
+
+  @custom-media --mini  (min-width: 280px) and (max-width: 374px);
+  @custom-media --mobile  (min-width: 375px) and (max-width: 767px);
+  @custom-media --tablet (min-width: 768px) and (max-width: 1024px);
+  @custom-media --desktop (min-width: 1025px);
+  @custom-media --desktop-xl (min-width: 1225px);
 }
 body {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -35,49 +49,86 @@ h4 {
 #about {
   & .inner {
     display: grid;
-    grid-gap: calc(var(--padding-primary) * 2);
-    grid-template-columns: 1fr 1fr;
-    color: #444;
+    grid-gap: calc(var(--padding-primary) *4);
+    grid-template-columns: repeat(6, 1fr);
   }
   & .box {
-    background: #fff;
     padding: var(--padding-primary);
-
-  }
-  & .a {
-    grid-row: 1 / span 2;
-  }
-  & .b {
-    grid-row: 2 / span 2;
-  }
-  
-}
-#quotes {
-  & .quote {
-    background-color: var(--color-lime);
-    box-shadow: 10px 10px 0px 0px var(--color-primary);
-    max-width: 40vw;
-    margin: 0 auto;
-
-
-    & blockquote {
-      padding: var(--padding-primary);
-      & p {
-        font-size: 2rem;
-        color: var(--color-primary);
+    background-color: #fff;
+    border: solid 3px var(--color-light-gray);
+    box-shadow: 10px 10px 0px 0px #000;
+    color: #000;
+    & h2 {
+      margin: 0;
+    }
+    & p {
+      margin: 0 0 .7rem 0;
+      font-size: 1.2rem;
+      &:last-child {
+        margin: 0;
       }
-      & .attribution {
-        font-size: 1rem;
-        font-family: 'Space Mono', monospace;
-        font-style: italic;
-        text-align: right;
-        &:before {
-          content: "– "
-        }
+    }
+    & .service-list {
+      & li:before {
+        content: '– '
+      }
+      padding: 0 0 0 13px;
+      margin: 0;
+      list-style: none;
+      text-indent: -13px;
+    }
+    &.quote {
+      background-color: var(--color-pink);
+      box-shadow: 10px 10px 0px 0px #000;
+      max-width: 40vw;
+      margin: 0 auto;
 
+      & blockquote {
+        padding: 0;
+        margin: 0;
+        & p {
+          font-size: 1.2rem;
+          color: #fff;
+        }
+        & .attribution {
+          & p {
+            font-size: 1rem;
+            font-family: 'Space Mono', monospace;
+            font-style: italic;
+            text-align: right;
+            margin: 0;
+            &.client {
+            }
+            &.name {
+              &:before {
+                content: "– "
+              }
+            }
+          }
+        }
       }
     }
   }
+  & .a {
+    grid-row: 1;
+    grid-column: 1 / span 4;
+  }
+  & .b {
+    grid-column: 4 / span 2;
+    grid-row: 2 / span 1;
+  }
+  & .c {
+    grid-row: 2 / span 2;
+    grid-column: 1 / span 3;
+  }
+  & .d {
+    grid-row: 3 / span 2;
+    grid-column: 4 / span 3;
+  }
+
+}
+
+#quotes {
 }
 
 .inner {
@@ -98,20 +149,100 @@ h4 {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
     font-weight: 700;
-    border-top: solid 2px #000;
     & p {
       margin: 0;
     }
   }
 }
-#main {
-}
-#about {
-  background-image: url('/img/background_curves.svg');
-  background-position: 50% 50%;
-  background-size: 100%;
+section {
+  margin: 10rem 0 0 0;
+  background-position: top center;
+  background-size: 120%;
   background-repeat: no-repeat;
-  min-height: 45vh;
+  &:first-child {
+    margin-top: 0;
+  }
+  & h2.section-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+  }
+  &#main {
+    background-image: url('/img/pink_curve.svg');
+  }
+  &#about {
+    background-image: url('/img/black_curve.svg');
+  }
+  &#team {
+    background-image: url('/img/blue_curve.svg');
+    & .inner {
+      display: grid;
+      grid-gap: calc(var(--padding-primary) *3);
+      @media (--tablet) {
+        max-width: 400px;
+        & .person {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (--desktop) {
+        max-width: var(--narrow-container);
+        & .person {
+          grid-template-columns: 1fr 2fr;
+        }
+      }
+    }
+    & .person {
+      & .bio {
+        padding: var(--padding-primary);
+        background-color: #fe938c;
+        border: solid 3px var(--color-light-gray);
+        box-shadow: 10px 10px 0px 0px color(var(--color-blue) tint(65%));
+        margin-top: 2rem;
+        color: #fff;
+        & p {
+          margin: 0 0 .7rem 0;
+          font-size: 1.2rem;
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+      & .name {
+        text-align: center;
+        & h2, & h3 {
+          margin: 0;
+          color: #fe938c
+        }
+        & h2 {
+          font-size: 2rem;
+
+        }
+      }
+      @media (--mini), (--mobile), (--tablet) {
+        text-align: center;
+        margin: calc(var(--padding-primary) * 2) auto;
+        max-width: 80vw;
+      }
+      @media (--desktop) {
+        display: grid;
+        grid-gap: 60px;
+        grid-template-areas: "name content";
+        grid-auto-rows: minmax(100px, 1fr);
+
+        @nest &:nth-child(odd) {
+          grid-template-areas: "content name";
+          grid-template-columns: 2fr 1fr;
+
+        }
+        @nest & .name {
+          grid-area: name;
+        }
+        @nest & .bio {
+          grid-area: content;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (--desktop) {
@@ -121,7 +252,7 @@ h4 {
   }
 }
 #projects {
-  grid-column-gap: calc(var(--padding-primary));
+  grid-column-gap: calc(var(--padding-primary) * 2);
   grid-row-gap: calc(var(--padding-primary) * 4);
   margin-top: calc(var(--padding-primary) * 4);
 
@@ -251,4 +382,29 @@ h4 {
 .grid > * :last-child > :last-child > :last-child {
   margin-bottom: 0;
 }
+
+@define-mixin btn-primary {
+  color: white;
+  background-color: var(--color-blue);
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+}
+
+.btn, a.btn {
+  color: var(--color-blue);
+  text-decoration: none;
+  text-decoration: none;
+  padding: .8rem 1.6rem;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.btn-primary, a.btn-primary {
+  @mixin btn-primary;
+  &:hover {
+    background-color: color(var(--color-blue) shade(10%));
+  }
+}
+
 

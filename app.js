@@ -9,10 +9,11 @@ const sugarss                 = require('sugarss')
 const df                      = require('dateformat')
 const fn                      = require('format-num')
 const SpikeDatoCMS            = require('spike-datocms')
+const postcssMixins           = require('postcss-mixins')
 
 const locals                  = { }
 
-const datos = new SpikeDatoCMS({
+const Dato = new SpikeDatoCMS({
   addDataTo: locals,
   token: process.env.dato_api_key,
   models: [
@@ -61,9 +62,10 @@ module.exports = {
     )}
   }),
   postcss: cssStandards({
-    locals: { datos }
+    locals: { Dato },
+    appendPlugins: postcssMixins()
   }),
   babel: jsStandards(),
-  plugins: [datos]
+  plugins: [ Dato ]
 }
 

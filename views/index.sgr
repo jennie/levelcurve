@@ -8,63 +8,91 @@ extends(src='layout.sgr')
         img(src='/img/level_curve_logo.svg')
 
         div.tagline(md).
-          {{ item.copy }}
-    #about
-      .inner
+          {{ dato.home_page[0].copy }}
+    #sections
+      section(id='about')
+        .inner
 
-        .about-us.box.a
-          p about us
-        .how-we-do.box.b
-          p how we do
-    #main
-      .inner
-        section#quotes
-          each(loop='quote in dato.quote')
-            div.quote
-              blockquote
-                p {{ quote.text}}
-                p(class="attribution").
-                  {{ quote.attribution }}
-                  
-                  {{ quote.client.name }}
+          .about-us.box.a
+            div(md).
+              {{ dato.home_page[0].about }}
 
-        h2 Projects
+          .how-we-do.box.b
+            h2 What we do
 
-        section#projects.grid
-          each(loop='project in dato.project')
-            div.project(class='{{ project.featured ? "featured" : "" }}' style="order: {{ project.position }}")
-              .cd
-                if(condition="{{ project.images[0] }}")
-                  img(src='//{{ dato._meta.imgixHost + project.images[0].path }}')
-                else
-                  img(src='/img/gem.png')
-              .copy
-                h2 {{ project.title }}
-                h3.clients
-                  each(loop='client in project.clients')
-                    if(condition='{{ client }}')
-                      span {{ client.name }}
+            ul.service-list
+              each(loop='service in dato.service')
+                li {{ service.name }}
 
-                if(condition='{{ project.date !== null }}')
-                  p.date {{ df(project.date, "mmm yyyy") }}
-                else
-                  p.date Coming soon!
+          .quote.box.c
+            blockquote
+              p {{ dato.home_page[0].featuredQuotes[0].text }}
+              div(class="attribution")
+                p(class="name") {{ dato.home_page[0].featuredQuotes[0].attribution }}
+                p(class="client") {{ dato.home_page[0].featuredQuotes[0].client.name }}
 
-                if(condition='{{ project.description }}')
-                  div.description(md).
-                    {{ project.description }}
+          .quote.box.d
+            blockquote
+              p {{ dato.home_page[0].featuredQuotes[1].text }}
+              div(class="attribution")
+                p(class="name") {{ dato.home_page[0].featuredQuotes[1].attribution }}
+                p(class="client") {{ dato.home_page[0].featuredQuotes[1].client.name }}
 
-                if(condition='{{ project.services.length !== 0 }}')
-                  .services
-                    h4: span Services
-                      each(loop='service in project.services')
-                        span(class='service') {{ service.name }}
+      section(id='main')
+        .inner
+          h2(class='section-title') Projects
 
-                if(condition='{{ project.credits.length !== 0 }}')
-                  .credits
-                    h4: span Credits
-                    each(loop='credit in project.credits')
-                      if(condition='{{ credit.role }}')
-                        p {{ credit.role }} by <b>{{ credit.contributor.name }}</b>
-                      else
-                        p Featuring <b>{{ credit.contributor }}</b>
+          section#projects.grid
+            each(loop='project in dato.project')
+              div.project(class='{{ project.featured ? "featured" : "" }}' style="order: {{ project.position }}")
+                .cd
+                  if(condition="{{ project.images[0] }}")
+                    img(src='//{{ dato._meta.imgixHost + project.images[0].path }}')
+                  else
+                    img(src='/img/gem.png')
+                .copy
+                  h2.title {{ project.title }}
+                  h3.clients
+                    each(loop='client in project.clients')
+                      if(condition='{{ client }}')
+                        span {{ client.name }}
+
+                  if(condition='{{ project.date !== null }}')
+                    p.date {{ df(project.date, "mmm yyyy") }}
+                  else
+                    p.date Coming soon!
+
+                  if(condition='{{ project.description }}')
+                    div.description(md).
+                      {{ project.description }}
+
+                  if(condition='{{ project.services.length !== 0 }}')
+                    .services
+                      h4: span Services
+                        each(loop='service in project.services')
+                          span(class='service') {{ service.name }}
+
+                  if(condition='{{ project.credits.length !== 0 }}')
+                    .credits
+                      h4: span Credits
+                      each(loop='credit in project.credits')
+                        if(condition='{{ credit.role }}')
+                          p {{ credit.role }} by <b>{{ credit.contributor.name }}</b>
+                        else
+                          p Featuring <b>{{ credit.contributor }}</b>
+      section(id='team')
+        h2(class='section-title') Team
+        .inner
+          each(loop='person in dato.person')
+            if(condition='{{ person.teamMember == true }}')
+              .person
+                  div(class='name')
+                    h2 {{ person.name }}
+                    h3 {{ person.title }}
+                    if(condition='{{ person.twitter }}')
+                      p.twitter: a(class='btn btn-primary' href='https://twitter.com/{{ person.twitter }}') {{ person.twitter }}
+                  if(condition='{{ person.bio }}')
+                    div(class='bio' md).
+                      {{ person.bio }}
+
+
