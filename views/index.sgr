@@ -106,4 +106,19 @@ extends(src='layout.sgr')
                     div(class='bio' md).
                       {{ person.bio }}
 
+      section(id='contact')
+        h2(class='section-title') Get in touch!
+        .inner
+          form(class='contact' name='contact' method='POST' netlify-honeypot='bot-field'  action='thank-you' netlify)
+            input(name='bot-field' style='display:none')
+            // select(name='service')
+            //   each(loop='service in dato.service')
+            //     option(value='{{ service.name }}') {{ service.name }}
 
+
+            input(name='name' type='text' placeholder='Name' required)
+            input(name='email' type='email' placeholder='Email address' required)
+            textarea(name='message' placeholder='Message')
+            button(class='btn btn-primary' type='submit') Submit
+          footer
+            p &copy; 2018 Level Curve

@@ -186,6 +186,15 @@ section {
   &#about {
     background-image: url('/img/black_curve.svg');
   }
+  &#contact {
+    background-image: url('/img/yellow_curve.svg');
+    padding-bottom: 2rem;
+    & footer {
+      text-align: center;
+      padding-top: 4rem;
+      color: var(--color-primary);
+    }
+  }
   &#team {
     background-image: url('/img/blue_curve.svg');
     & .inner {
@@ -398,14 +407,17 @@ section {
 
 @define-mixin btn-primary {
   color: white;
-  background-color: var(--color-blue);
+  background-color: var(--color-primary);
   display: inline-block;
   cursor: pointer;
   border: none;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  font-size: 14px;
 }
 
 .btn, a.btn {
-  color: var(--color-blue);
+  color: var(--color-primary);
   text-decoration: none;
   text-decoration: none;
   padding: .8rem 1.6rem;
@@ -416,7 +428,7 @@ section {
 .btn-primary, a.btn-primary {
   @mixin btn-primary;
   &:hover {
-    background-color: color(var(--color-blue) shade(10%));
+    background-color: color(var(--color-primary) shade(10%));
   }
 }
 
@@ -468,3 +480,57 @@ nav {
 @mixin hover projects, #4848F0;
 @mixin hover team, #FFF200;
 @mixin hover contact, #00AEEF;
+
+
+form {
+
+  margin: 0 auto;
+  max-width: 300px;
+  @media (--tablet), (--desktop) {
+    max-width: 486px;
+  }
+
+  & .btn-primary {
+    background-color: var(--color-primary);
+    &:hover {
+      background-position:
+    }
+  }
+}
+
+@define-mixin field-input {
+  border: 0;
+  width: 100%;
+  display: block;
+  line-height: 2rem;
+  font-size: 16px;
+  padding: .5rem 1rem;
+  margin: 0 0 1rem 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+
+  border: solid 3px var(--color-light-gray);
+  box-shadow: 7px 7px 0px 0px var(--color-primary);
+
+}
+
+input {
+  @mixin field-input;
+
+}
+textarea {
+  @mixin field-input;
+
+}
+
+input, textarea {
+  &:focus {
+    outline: none;
+  }
+}
+
+.button-inline {
+  border-radius: 2rem;
+  margin-left: -4rem;
+}
+
+
