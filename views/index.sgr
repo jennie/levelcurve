@@ -111,9 +111,11 @@ extends(src='layout.sgr')
         .inner
           form(class='contact' name='contact' method='POST' netlify-honeypot='bot-field'  action='thank-you' netlify)
             input(name='bot-field' style='display:none')
-            // select(name='service')
-            //   each(loop='service in dato.service')
-            //     option(value='{{ service.name }}') {{ service.name }}
+            .select
+              select(name='service')
+                option(disabled selected) What service are you interested in?
+                each(loop='service in dato.service')
+                  option(value='{{ service.name }}') {{ service.name }}
 
 
             input(name='name' type='text' placeholder='Name' required)
