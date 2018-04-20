@@ -13,7 +13,7 @@
     "format-num": "^1.0.0",
     "postcss-mixins": "^6.2.0",
     "reshape-standard": "^3.0.0",
-    "spike": "^2.0.0",
+    "spike": "^2.2.1",
     "spike-css-standards": "^3.0.0",
     "spike-datocms": "^2.2.2",
     "spike-js-standards": "^2.0.2",
