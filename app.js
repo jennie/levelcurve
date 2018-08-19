@@ -24,12 +24,8 @@ const Dato = new SpikeDatoCMS({
         output: (page) => { return `/index.html` }
       }
     },
-  {
-    name: 'person'
-  },
-  {
-    name: 'client'
-  },
+  { name: 'person' },
+  { name: 'client' },
   {
     name: 'project',
     transform: (data) => {
@@ -40,12 +36,8 @@ const Dato = new SpikeDatoCMS({
       return data
     }
   },
-  {
-    name: 'quote'
-  },
-  {
-    name: 'service'
-  }
+  { name: 'quote' },
+  { name: 'service' }
 ]
 })
 

@@ -124,3 +124,5 @@ extends(src='layout.sgr')
             button(class='btn btn-primary' type='submit') Submit
           footer
             p &copy; 2018 Level Curve
+            p.
+              <p>Made with ♡ by <a href='https://www.jenniefaber.com' style="color: inherit;">jennie</a>
