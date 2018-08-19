@@ -123,6 +123,6 @@ extends(src='layout.sgr')
             textarea(name='message' placeholder='Message')
             button(class='btn btn-primary' type='submit') Submit
           footer
-            p &copy; 2018 Level Curve
-            p.
-              <p>Made with ♡ by <a href='https://www.jenniefaber.com' style="color: inherit;">jennie</a>
+            p © 2018 Level Curve
+            p(mdi) Made with ♡ by [jennie](https://www.jenniefaber.com')
+

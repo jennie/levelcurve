@@ -8,21 +8,22 @@
   },
   "bugs": "https://github.com/jennie/level-curve/issues",
   "dependencies": {
-    "dateformat": "^3.0.2",
-    "dotenv": "^5.0.0",
+    "dateformat": "^3.0.3",
+    "dotenv": "^6.0.0",
     "format-num": "^1.0.0",
+    "postcss-color-mod-function": "^2.4.2",
     "postcss-mixins": "^6.2.0",
     "reshape-standard": "^3.3.0",
-    "spike": "^2.2.1",
+    "spike": "^2.3.0",
     "spike-css-standards": "^3.0.0",
     "spike-datocms": "^2.4.1",
     "spike-js-standards": "^2.0.2",
-    "spike-page-id": "^1.0.0",
-    "sugarml": "^0.6.0",
-    "sugarss": "^1.0.0"
+    "spike-page-id": "^1.1.0",
+    "sugarml": "^0.7.0",
+    "sugarss": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "^0.25.0",
     "rimraf": "^2.6.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
