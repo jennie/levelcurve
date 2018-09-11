@@ -124,5 +124,5 @@ extends(src='layout.sgr')
             button(class='btn btn-primary' type='submit') Submit
           footer
             p © 2018 Level Curve
-            p(mdi) Made with ♡ by [jennie](https://www.jenniefaber.com')
+            p(mdi) Made with ♡ by [jennie](https://www.jenniefaber.com)
 
