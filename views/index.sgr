@@ -62,7 +62,7 @@ extends(src='layout.sgr')
               div.project(class='{{ project.featured ? "featured" : "" }}' style="order: {{ project.position }}")
                 .cd
                   if(condition="{{ project.images[0] }}")
-                    img(src='//{{ dato._meta.imgixHost + project.images[0].path }}')
+                    img(src='//{{ dato._meta.imgixHost + project.images[0].path }}?bm=normal&w=400&fit=clip&auto=compress,format')
                   else
                     img(src='/img/gem.png')
                 .copy
