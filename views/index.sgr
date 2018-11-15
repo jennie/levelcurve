@@ -35,6 +35,10 @@ extends(src='layout.sgr')
               each(loop='service in dato.service')
                 li {{ service.name }}
 
+
+
+
+
           .quote.box.c
             blockquote
               p {{ dato.home_page[0].featuredQuotes[0].text }}
@@ -88,7 +92,8 @@ extends(src='layout.sgr')
                       h4: span Credits
                       each(loop='credit in project.credits')
                         if(condition='{{ credit.role }}')
-                          p {{ credit.role }} by <b>{{ credit.contributor.name }}</b>
+                          if(condition='{{ credit.contributor }}')
+                            p {{ credit.role }} by <b>{{ credit.contributor.name }}</b>
                         else
                           p Featuring <b>{{ credit.contributor }}</b>
       section(id='team')
