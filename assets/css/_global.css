@@ -421,7 +421,7 @@ section {
 }
 @define-mixin btn-off {
   color: white;
-  background-color:  color(var(--color-pink) lightness(90%));
+  background-color:  color(var(--color-pink) lightness(75%));
 }
 @define-mixin btn-tag  {
   text-transform: none;
