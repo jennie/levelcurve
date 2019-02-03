@@ -9,7 +9,6 @@
 
 var el = document.getElementById("tag-buttons");
 
-
 el.addEventListener('click', function (e) {
   var button = e.target;
   var resetButton = document.querySelector('.reset')
