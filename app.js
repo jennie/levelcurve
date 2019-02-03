@@ -24,6 +24,7 @@ const Dato = new SpikeDatoCMS({
         output: (page) => { return `/index.html` }
       }
     },
+  { name: 'category' },
   { name: 'person' },
   { name: 'client' },
   {
@@ -43,7 +44,7 @@ const Dato = new SpikeDatoCMS({
 
 module.exports = {
   devtool: 'source-map',
-  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.css' },
+  matchers: { html: '*(**/)*.sgr', css: '*(**/)*.css'},
   ignore: [ '**/_layout.sgr', '**/layout.sgr', '**/.*', 'readme.md', 'yarn.lock', 'custom_modules/**', 'views/includes/**' ],
   reshape: htmlStandards ({
     parser: sugarml,
