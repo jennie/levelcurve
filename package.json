@@ -12,6 +12,7 @@
     "dotenv": "^6.2.0",
     "format-num": "^1.0.0",
     "postcss-color-mod-function": "^2.4.3",
+    "postcss-custom-media": "^7.0.8",
     "postcss-mixins": "^6.2.3",
     "reshape-standard": "^3.3.0",
     "spike": "^2.3.0",

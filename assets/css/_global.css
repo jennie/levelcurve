@@ -340,6 +340,10 @@ section {
   }
 }
 
+#tag-buttons {
+  text-align: center;
+}
+
 #projects {
   grid-column-gap: calc(var(--padding-primary) * 2);
   grid-row-gap: calc(var(--padding-primary) * 4);
@@ -509,16 +513,32 @@ section {
 @define-mixin btn-primary {
   color: white;
   background-color: var(--color-primary);
+}
+
+@define-mixin btn-off {
+  color: white;
+  background-color: color(var(--color-pink) lightness(75%));
+}
+
+@define-mixin btn-tag {
+  text-transform: none;
+  letter-spacing: 0;
+  padding: .4rem .8rem;
+}
+
+@define-mixin btn-on {
+  color: white;
+  background-color: var(--color-pink);
+}
+
+.btn,
+a.btn {
   display: inline-block;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
   letter-spacing: .1rem;
   font-size: 14px;
-}
-
-.btn,
-a.btn {
   color: var(--color-primary);
   text-decoration: none;
   text-decoration: none;
@@ -533,6 +553,26 @@ a.btn-primary {
 
   &:hover {
     background-color: color(var(--color-primary) shade(10%));
+  }
+}
+
+.btn-off,
+a.btn-off {
+  @mixin btn-tag;
+  @mixin btn-off;
+
+  &:hover {
+    background-color: color(var(--color-pink) lightness(80%));
+  }
+}
+
+.btn-on,
+a.btn-on {
+  @mixin btn-tag;
+  @mixin btn-on;
+
+  &:hover {
+    background-color: color(var(--color-pink) shade(10%));
   }
 }
 
@@ -689,4 +729,12 @@ textarea {
 .button-inline {
   border-radius: 2rem;
   margin-left: -4rem;
+}
+
+[data-toggle='on'] {
+  display: block;
+}
+
+[data-toggle='off'] {
+  display: none;
 }

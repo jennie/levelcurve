@@ -27,6 +27,7 @@ const Dato = new SpikeDatoCMS({
         }
       }
     },
+    { name: "category" },
     { name: "person" },
     { name: "client" },
     {
@@ -69,7 +70,7 @@ module.exports = {
   }),
   postcss: cssStandards({
     locals: { Dato },
-    appendPlugins: [postcssMixins(), postcssCustomMedia]
+    appendPlugins: [postcssMixins(), postcssCustomMedia()]
   }),
   babel: jsStandards(),
   plugins: [Dato]

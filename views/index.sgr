@@ -35,10 +35,6 @@ extends(src='layout.sgr')
               each(loop='service in dato.service')
                 li {{ service.name }}
 
-
-
-
-
           .quote.box.c
             blockquote
               p {{ dato.home_page[0].featuredQuotes[0].text }}
@@ -55,11 +51,18 @@ extends(src='layout.sgr')
 
       section(id='main')
         .inner
-          h2(class='section-title') Projects
 
-          section#projects.grid
+
+
+          h2(class='section-title') Projects
+          #tag-buttons
+            button(class="btn btn-on reset" data-filter="project-list" data-reset="true") All
+            each(loop='tag in dato.category')
+              button(class="btn btn-off btn-tag" data-filter="project-list" data-filter-tag="{{ tag.slug }}") {{ tag.title }}
+
+          section#projects.grid.project-list
             each(loop='project in dato.project')
-              div.project(class='{{ project.featured ? "featured" : "" }}' style="order: {{ project.position }}")
+              div.project(class='{{ project.featured ? "featured" : "" }}' style="order: {{ project.position }}" data-tags=' {{ project.tags.map(a => a.slug).join(" ") }}')
                 .cd
                   if(condition="{{ project.images[0] }}")
                     img(src='//{{ dato._meta.imgixHost + project.images[0].path }}?bm=normal&w=400&fit=clip&auto=compress,format')
@@ -132,4 +135,6 @@ extends(src='layout.sgr')
           footer
             p © 2018 Level Curve
             p(mdi) Made with ♡ by [jennie](https://www.jenniefaber.com)
+
+
 
