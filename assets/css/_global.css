@@ -1,23 +1,19 @@
 :root {
   --color-primary: #4848F0;
   --color-blue: #00AEEF;
-
   --color-yellow: #FFF200;
   --color-lime: #E1F1A0;
   --color-pink: #EC008C;
   --color-purple: #C4BAF2;
   --color-light-gray: #F6F3F9;
   --padding-primary: 24px;
-
   --max-container: 1200px;
   --narrow-container: 800px;
-
   /* max-widths for containers */
   --mini: 90vw;
   --mobile: 90vw;
   --tablet: 80vw;
   --desktop: 1024px;
-
 }
 
 @custom-media --mini (min-width: 280px) and (max-width: 374px);
@@ -161,7 +157,6 @@ h4 {
     grid-row: 3 / span 2;
     grid-column: 4 / span 3;
   }
-
 }
 
 #quotes {}
@@ -176,7 +171,6 @@ h4 {
   (--desktop-xl) {
     padding: var(--padding-primary);
   }
-
 }
 
 #banner {
@@ -307,7 +301,6 @@ section {
 
         & h2 {
           font-size: 2rem;
-
         }
       }
 
@@ -327,7 +320,6 @@ section {
         @nest &:nth-child(odd) {
           grid-template-areas: "content name";
           grid-template-columns: 2fr 1fr;
-
         }
 
         @nest & .name {
@@ -345,7 +337,6 @@ section {
 @media only screen and (--desktop) {
   #projects {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-
   }
 }
 
@@ -477,7 +468,6 @@ section {
 
         &:last-child:after {
           content: ''
-
         }
       }
     }
@@ -551,22 +541,18 @@ nav {
   margin-left: auto;
   width: 100%;
 
-
   @media (--tablet),
   (--desktop) {
     width: auto;
   }
 
   & ul {
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0;
     padding: 0;
     width: 100%;
-
-
     align-items: center;
     position: relative;
     pointer-events: auto;
@@ -600,8 +586,6 @@ nav {
         display: block;
         transition: all .5s cubic-bezier(.03, .82, .34, .99);
         box-shadow: inset 0 0 0 2.5px transparent;
-
-
       }
     }
   }
@@ -617,7 +601,6 @@ $color {
 
 @media (--tablet),
 (--desktop) {
-
   @mixin hover about,
   #EC008C;
   @mixin hover projects,
@@ -657,21 +640,17 @@ form {
   padding: .5rem 1rem;
   margin: 0 0 1rem 0;
   font-family: 'IBM Plex Sans', sans-serif;
-
   border: solid 3px var(--color-light-gray);
   box-shadow: 7px 7px 0px 0px var(--color-primary);
-
 }
 
 input {
   @mixin field-input;
-
 }
 
 textarea {
   @mixin field-input;
   height: 150px;
-
 }
 
 .select {
