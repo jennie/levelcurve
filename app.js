@@ -10,7 +10,6 @@ const fn = require("format-num");
 const SpikeDatoCMS = require("spike-datocms");
 const postcssMixins = require("postcss-mixins");
 const postcssCustomMedia = require("postcss-custom-media");
-
 const locals = {};
 
 const Dato = new SpikeDatoCMS({

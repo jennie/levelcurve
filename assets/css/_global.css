@@ -26,7 +26,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: var(--color-light-gray);
+  background-color: #F6F3F9;
 }
 
 h1,
@@ -71,7 +71,7 @@ h4 {
 
     padding: var(--padding-primary);
     background-color: #fff;
-    border: solid 3px var(--color-light-gray);
+    border: solid 3px #F6F3F9;
     box-shadow: 10px 10px 0px 0px #000;
     color: #000;
 
@@ -99,7 +99,7 @@ h4 {
     }
 
     &.quote {
-      background-color: var(--color-pink);
+      background-color: #EC008C;
       box-shadow: 10px 10px 0px 0px #000;
 
       & blockquote {
@@ -517,7 +517,7 @@ section {
 
 @define-mixin btn-off {
   color: white;
-  background-color: color(var(--color-pink) lightness(75%));
+  background-color: rgb(255, 128, 204);
 }
 
 @define-mixin btn-tag {
@@ -528,7 +528,8 @@ section {
 
 @define-mixin btn-on {
   color: white;
-  background-color: var(--color-pink);
+  background-color: #EC008C;
+
 }
 
 .btn,
@@ -562,7 +563,7 @@ a.btn-off {
   @mixin btn-off;
 
   &:hover {
-    background-color: color(var(--color-pink) lightness(80%));
+    background-color: rgb(255, 153, 214);
   }
 }
 
@@ -572,7 +573,7 @@ a.btn-on {
   @mixin btn-on;
 
   &:hover {
-    background-color: color(var(--color-pink) shade(10%));
+    background-color: rgb(212, 0, 126);
   }
 }
 
@@ -663,7 +664,8 @@ form {
   }
 
   & .btn-primary {
-    background-color: var(--color-primary);
+    background-color: #4848F0;
+
 
     &:hover {
       background-position:
@@ -680,8 +682,9 @@ form {
   padding: .5rem 1rem;
   margin: 0 0 1rem 0;
   font-family: 'IBM Plex Sans', sans-serif;
-  border: solid 3px var(--color-light-gray);
-  box-shadow: 7px 7px 0px 0px var(--color-primary);
+  border: solid 3px #F6F3F9;
+
+  box-shadow: 7px 7px 0px 0px #4848F0;
 }
 
 input {
@@ -700,7 +703,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 1rem 0;
-  box-shadow: 7px 7px 0px 0px var(--color-primary);
+  box-shadow: 7px 7px 0px 0px #4848F0;
 
   & select {
     padding: 12px 1rem;
