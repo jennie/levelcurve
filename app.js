@@ -5,7 +5,6 @@ const cssStandards = require("spike-css-standards");
 const jsStandards = require("spike-js-standards");
 const pageId = require("spike-page-id");
 const sugarml = require("sugarml");
-const sugarss = require("sugarss");
 const df = require("dateformat");
 const fn = require("format-num");
 const SpikeDatoCMS = require("spike-datocms");
@@ -70,7 +69,7 @@ module.exports = {
   }),
   postcss: cssStandards({
     locals: { Dato },
-    appendPlugins: [postcssMixins(), postcssCustomMedia()]
+    appendPlugins: [postcssMixins(), postcssCustomMedia]
   }),
   babel: jsStandards(),
   plugins: [Dato]

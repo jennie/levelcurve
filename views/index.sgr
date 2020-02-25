@@ -1,13 +1,25 @@
-extends(src='layout.sgr')
-  block(name='title')
-    title Level Curve
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='description' content='')
+    meta(name='author' content='jennie')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
 
-  block(name='content')
+
+    block(name='title')
+      title Level Curve
+
+    link(rel='stylesheet' href='css/index.css')
+
+  body.level-container
+    main(role='main')
+
     #banner
       .inner
         img(src='/img/level_curve_logo.svg')
         nav
-
           ul(class='menu')
             li
               a(class='about' href='/#about') About
@@ -35,6 +47,7 @@ extends(src='layout.sgr')
               each(loop='service in dato.service')
                 li {{ service.name }}
 
+
           .quote.box.c
             blockquote
               p {{ dato.home_page[0].featuredQuotes[0].text }}
@@ -51,9 +64,6 @@ extends(src='layout.sgr')
 
       section(id='main')
         .inner
-
-
-
           h2(class='section-title') Projects
           #tag-buttons
             button(class="btn btn-on reset" data-filter="project-list" data-reset="true") All
@@ -137,4 +147,8 @@ extends(src='layout.sgr')
             p(mdi) Made with ♡ by [jennie](https://www.jenniefaber.com)
 
 
+
+    block(name='javascript')
+      // script window.locals = {{{ JSON.stringify(locals.dato.category) }}}
+      script(src='js/main.js' defer)
 
