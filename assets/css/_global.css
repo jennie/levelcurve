@@ -276,7 +276,7 @@ section {
         padding: var(--padding-primary);
         background-color: #fe938c;
         border: solid 3px var(--color-light-gray);
-        box-shadow: 10px 10px 0px 0px color(var(--color-blue) tint(65%));
+        box-shadow: 10px 10px 0px 0px #fff;
         margin-top: 2rem;
         color: #fff;
 
@@ -553,7 +553,7 @@ a.btn-primary {
   @mixin btn-primary;
 
   &:hover {
-    background-color: color(var(--color-primary) shade(10%));
+    background-color: #3838BA;
   }
 }
 
