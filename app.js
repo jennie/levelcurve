@@ -20,27 +20,27 @@ const Dato = new SpikeDatoCMS({
       name: "home_page",
       template: {
         path: "views/index.sgr",
-        output: page => {
+        output: (page) => {
           return `/index.html`;
-        }
-      }
+        },
+      },
     },
     { name: "category" },
     { name: "person" },
     { name: "client" },
     {
       name: "project",
-      transform: data => {
+      transform: (data) => {
         if (data.date) {
           dateHours = new Date(data.date);
           data.date = dateHours.setUTCHours(5);
         }
         return data;
-      }
+      },
     },
     { name: "quote" },
-    { name: "service" }
-  ]
+    { name: "service" },
+  ],
 });
 
 module.exports = {
@@ -53,23 +53,23 @@ module.exports = {
     "readme.md",
     "yarn.lock",
     "custom_modules/**",
-    "views/includes/**"
+    "views/includes/**",
   ],
   reshape: htmlStandards({
     parser: sugarml,
-    locals: ctx => {
+    locals: (ctx) => {
       return Object.assign(
         locals,
         { pageId: pageId(ctx) },
         { df: df.bind(df) },
         { fn: fn.bind(fn) }
       );
-    }
+    },
   }),
   postcss: cssStandards({
     locals: { Dato },
-    appendPlugins: [postcssMixins(), postcssCustomMedia]
+    appendPlugins: [postcssMixins(), postcssCustomMedia],
   }),
   babel: jsStandards(),
-  plugins: [Dato]
+  plugins: [Dato],
 };

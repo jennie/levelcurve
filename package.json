@@ -24,7 +24,7 @@
     "sugarss": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^3.4.0",
+    "ava": "^3.9.0",
     "rimraf": "^2.7.1",
     "snazzy": "^7.1.1",
     "standard": "^10.0.2"
