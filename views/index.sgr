@@ -120,6 +120,7 @@ html
                     h3 {{ person.title }}
                     if(condition='{{ person.twitter }}')
                       p.twitter: a(class='btn btn-primary' href='https://twitter.com/{{ person.twitter }}') {{ person.twitter }}
+                    if(condition='{{ person.photo }}')
                       img(src='//{{ dato._meta.imgixHost + person.photo.path }}?bm=normal&fit=facearea&facepad=20&w=300&h=500&balph=20&blend=FF8C88&auto=compress' style="max-width: 100%")
 
                   if(condition='{{ person.bio }}')
