@@ -121,7 +121,7 @@ html
                     if(condition='{{ person.twitter }}')
                       p.twitter: a(class='btn btn-primary' href='https://twitter.com/{{ person.twitter }}') {{ person.twitter }}
                     if(condition='{{ person.photo }}')
-                      img(src='//{{ dato._meta.imgixHost + person.photo.path }}?bm=normal&fit=facearea&facepad=20&w=300&h=500&balph=20&blend=FF8C88&auto=compress' style="max-width: 100%")
+                      img(src='//{{ dato._meta.imgixHost + person.photo.path }}?bm=normal&fit=facearea&facepad=20&w=300&h=500&auto=compress' style="max-width: 100%")
 
                   if(condition='{{ person.bio }}')
                     div(class='bio' md).
@@ -144,7 +144,7 @@ html
             textarea(name='message' placeholder='Message')
             button(class='btn btn-primary' type='submit') Submit
           footer
-            p © 2018 Level Curve
+            p © 2018-2021 Level Curve
             p(mdi) Made with ♡ by [jennie](https://www.jenniefaber.com)
 
 
